@@ -1,0 +1,57 @@
+<html xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<a class="navbar-brand" href="#">Controle de Fornecedores</a>
+		<!-- Navbar links-->
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/fornecedores}">Controle de Fornecedores</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<br>
+	<div class="container">
+		<div class="card">
+			<div class="card-header text-center">
+				<h3>Adicionar Fornecedor</h3>
+			</div>
+			<div class="card-body">
+				<form th:action="@{/fornecedores}" th:object="${fornecedor}" method="POST">
+					<div class="form-group">
+						<label>Fornecedor: </label>
+					<input type="text" name="nome_fornecedor" th:field="*{nome_fornecedor}" class="form-control" placeholder="Digite o fornecedor: " required>			
+					</div>
+					
+					<div class="form-group">
+						<label>Segmento: </label>
+					<input type="text" name="segmento_fornecedor" th:field="*{segmento_fornecedor}" class="form-control" placeholder="Digite o segmento: " required>			
+					</div>
+					
+					<div class="form-group">
+						<label>Dia da Visita: </label>
+					<input type="text" name="dia_da_visita_fornecedor" th:field="*{dia_da_visita_fornecedor}" class="form-control" placeholder="Digite o dia da visita: " required>			
+					</div>
+					<br>
+					<div class="box-footer">
+						<button class="btn btn-success">Salvar</button>
+					</div>
+					
+				</form>
+		
+		</div>
+	</div>
+</body>
+
+</html>

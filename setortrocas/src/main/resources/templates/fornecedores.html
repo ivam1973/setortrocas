@@ -1,0 +1,57 @@
+<html xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<a class="navbar-brand" href="#">Controle de Fornecedores</a>
+		<!-- Navbar links-->
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/fornecedores}">Controle de Fornecedores</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<br>
+	<div class="container">
+		<div class="card">
+			<div class="card-header text-center">
+				<h3>Listagem de Fornecedores</h3>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-lg-3">
+				<a th:href="@{/fornecedores/novo}" class="btn btn-primary btn-sm mb3">Adicionar Fornecedor</a>
+			</div>
+			</div>
+			<div class="card-body">
+				<table class="table table-hover">
+					<tr class="bg-dark text-white">
+						<th>Fornecedor</th>
+						<th>Segmento</th>
+						<th>Dia da Visita</th>
+						<th>Atualizar/Deletar</th>
+					</tr>
+					<tr th:each="fornecedor:${fornecedores}">
+						<td th:text=${fornecedor.nome_fornecedor}>Fornecedor</td>
+						<td th:text=${fornecedor.segmento_fornecedor}>Segmento</td>
+						<td th:text=${fornecedor.dia_da_visita_fornecedor}>Dia da Visita</td>
+					<td>
+						<a th:href="@{/fornecedores/editar/{id}(id=${fornecedor.id})}" class="btn btn-info">Atualizar</a>
+						<a th:href="@{/fornecedores/{id}(id=${fornecedor.id})}" class="btn btn-danger">Deletar</a>
+					</td>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
